@@ -1,0 +1,32 @@
+<% include partials/header %>
+<% var  imgUrl='https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='%>
+<% var apiKey='&key=AIzaSyALWmLwsAQzrj9ZCzYCldEYJC9kD9BZGyY'%>
+
+
+          <h3>TRAVEL INDIA WITH US....</h3>
+
+  <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                 <% data.results.forEach(function(place){%>
+
+					<div class="col-md-4 col-sm-6">
+                <% if(place.photos!=undefined) {%>
+
+					      <img  class= "card-img-top" src="<%= imgUrl+place.photos[0].photo_reference+apiKey %>" class="image-rounded" height="200" width="200">
+              <%}%>
+                <div class="card-body">
+					      <p><strong><%=place.name%></strong></p>
+
+                 <form action="/place/<%=place.place_id%>" method="post">
+					      <button class="btn btn-primary">VIEW</button>
+              </form>
+              </form>
+            </div>
+
+						</div>
+          <%})%>
+        </div>
+
+
+
+<body>
+</html>

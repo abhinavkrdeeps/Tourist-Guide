@@ -1,0 +1,30 @@
+<% include partials/header %>
+        <% var  imgUrl='https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='%>
+        <% var apiKey='&key=AIzaSyALWmLwsAQzrj9ZCzYCldEYJC9kD9BZGyY'%>
+
+
+
+        <% const arr = ['/img/hotel2.jpg','/img/hotel3.jpeg','/img/hotel4.jpeg','/img/hotel5.jpeg','/img/hotel6.jpeg','/img/hotel7.jpeg','/img/hotel8.jpeg','/img/hotel9.jpeg'];%>
+        <% var min=0;%>
+        <% var max =arr.length-1;%>
+        <% var random =Math.floor(Math.random() * (+max - +min)) + +min;  %>
+        <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+
+
+        <% data.results.forEach(function(place){%>
+          <div class="col-md-4 col-sm-6">
+        <% if(place.photos==undefined) {%>
+          <img class="card-img-top" src="<%=arr[random]%>">
+
+        <%} else {%>
+          <img  class= "card-img-top" src="<%= imgUrl+place.photos[0].photo_reference+apiKey %>" class="image-rounded" height="200" width="200">
+        <%}%>
+        <p><strong><%=place.name%></strong></p>
+        <form action="/place/nearby/<%=place.place_id%>/origin/<%=origin%>" method="post">
+        <button class="btn btn-primary">VIEW</button>
+        </form>
+        </div>
+        <%})%>
+        </div>
+  </body>
+  </html>

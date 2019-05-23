@@ -1,0 +1,103 @@
+<% include partials/header %>
+<style>
+
+
+
+</style>
+
+<% let lat = data.result.geometry.location.lat %>
+<% let lng = data.result.geometry.location.lng %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Map</p>
+            <div class="list-group">
+              <li class="list-group-item">
+
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+                   Show me nearby place
+                </button>
+
+                </li>
+
+                <li class="list-group-item" id="hideandshow">
+
+                  <form class="form" action="/nearby/latitude/<%=data.result.geometry.location.lat%>/longitude/<%=data.result.geometry.location.lng%>/address/<%=data.result.formatted_address%>" method="post">
+                Type <select class="" name="type">
+                    <option value="restaurant">restaurant</option>
+                    <option value="hotels">Hotels</option>
+                    <option value="Medicals">Medicals</option>
+                  </select> <br></br>
+
+                  Distance <select class="" name="distance">
+                      <option value="500">500 meters</option>
+                      <option value="1000">1000 meters</option>
+                      <option value="5000">no prefrence</option>
+                    </select><br></br>
+
+                  Price <select class="" name="price">
+                      <option value="0">Most Affordable</option>
+                      <option value="1"> Expensive</option>
+
+                    </select><br></br>
+
+                      <input class="btn btn-success" type="submit" name="" value="Search">
+                  </form>
+
+                </li>
+                <li class="list-group-item">
+
+                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">
+                     Show me Map
+                  </button>
+
+                  <form class="" action="/map/latitude/<%=data.result.geometry.location.lat%>/longitude/<%=data.result.geometry.location.lng%>/address/<%=data.result.formatted_address %>" method="post">
+                   Your Origin <input type="text" name="origin">
+                  <input class="btn btn-success" type="submit" name="" value="Go">
+
+
+                  </li>
+
+
+
+
+            </div>
+
+        </div>
+
+        <div class="col-md-9">
+            <div class="thumbnail">
+                    <img class="img-responsive" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=<%= data.result.photos[0].photo_reference%>&key=AIzaSyALWmLwsAQzrj9ZCzYCldEYJC9kD9BZGyY"/>
+                <div class="caption-full">
+                    <h4 class="pull-right">Affordable</h4>
+                    <h3><a><%=data.result.name %></a></h3>
+                    <p>Address: <%=data.result.formatted_address %> </p>
+                      <p>Contact Number: <%=data.result.formatted_phone_number %> </p>
+                </div>
+            </div>
+
+
+            <div class="well">
+                <div class="text-right">
+                     Review
+                </div>
+                <hr>
+
+                 <% data.result.reviews.forEach(function(comment){ %>
+                   <div class="row">
+                       <div class="col-md-9">
+                           <strong><%= comment.author_name %></strong>
+                    <p>
+                        <%= comment.text %>
+                    </p>
+                <% }) %>
+                </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

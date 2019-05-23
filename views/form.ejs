@@ -1,0 +1,209 @@
+<!DOCType html>
+<html>
+<head>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
+
+<style>
+  body{
+    background-color: darkgrey;
+    text-align: center;
+    text-anchor: middle;
+    color: crimson;
+  }
+html, body, section {
+
+  height: 100%;
+}
+body {
+
+  font-family: sans-serif;
+  font-size: 1.25rem;
+  line-height: 150%;
+  text-align: center;
+  text-shadow: 0 2px 2px #b6701e;
+}
+input::placeholder{
+	color: green;
+	font-size: 15px;
+	margin-left: 10px;
+
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1{
+  font-size: 2.75rem;
+  margin: 0 0 0.75rem 0;
+}
+.container {
+  display: flex;
+}
+.left-half {
+  flex: 1;
+  width: 100%
+  height: 100%;
+
+}
+.item {
+  width: 100%
+  height: 350px;
+}
+img{
+	object-fit: fill;
+	background-size: cover;
+	width: 100%
+	height: 100%;
+	justify-content: flex-start;
+
+}
+.right-half {
+  flex: 1;
+  height: 100%;
+  padding: 1rem;
+}
+input{
+	border: 2px solid red;
+	border-radius: 5px;
+	width: 250px;
+	height: 40px;
+	margin-top: 20px;
+	margin-left: 150px;
+}
+select{
+	border: 2px solid red;
+	border-radius: 5px;
+	width: 250px;
+	height: 40px;
+	margin-top: 20px;
+	margin-left: 150px;
+}
+
+span{
+  font-size: 20px;
+  margin-top: 10px;
+
+}
+button{
+	margin-top: 20px;
+	margin-left: 150px;
+	width: 250px;
+}
+
+</style>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+          <a href="index.html" class="navbar-brand">Travel Planer</a>
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a href="/" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="/html/about.html" class="nav-link">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a href="/response" class="nav-link">Submit your response</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+   <h1>Travel With Us....</h1>
+    <section class="container">
+  <div class="left-half">
+    <article>
+      <h1>Must Visit ...</h1>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../img/amritsar.jpg" alt="Golden-Temple">
+    </div>
+
+    <div class="item">
+      <img src="../img/red.jpg" alt="Taj">
+    </div>
+
+    <div class="item">
+      <img src="../img/lights.jpg" alt="Hotel">
+    </div>
+
+    <div class="item">
+      <img src="../img/rodina_mat.jpg" alt="Hotel">
+    </div>
+  </div>
+
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+    </article>
+  </div>
+
+  <div class="right-half">
+
+    <article>
+
+      <h1>Fill For Customized Result</h1>
+      <form action="/form" method="post">
+      <div class="input1">
+
+      <span>Type Of Place</span>  <select  name="tag">
+          <option value="beaches">Beaches</option>
+          <option value="temples">Temples</option>
+          <option value="mountains">Mountains</option>
+          <option value="museum">Museum</option>
+          <option value="resort">Resort</option>
+        </select>
+      </div>
+
+    
+
+      <div class="input2">
+        <button class="btn btn-md btn-danger">SUBMIT</button>
+      </div>
+      </form>
+
+
+    </article>
+  </div>
+</section>
+</body>
+</html>

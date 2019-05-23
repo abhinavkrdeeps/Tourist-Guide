@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
+
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+
+
+
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+          <div class="container">
+            <a href="index.html" class="navbar-brand">Travel Planer</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="about.html" class="nav-link">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/response" class="nav-link">Submit your response</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Map</p>
+             <div class="list-group">
+                 <li class="list-group-item">
+
+                   <form class="" action="/map/destination/<%=data.result.formatted_address%>/origin/<%=origin%>" method="post">
+
+                   <input class="btn btn-info btn-lg" type="submit" name="" value="Show me map">
+
+                  </form>
+
+                   </li>
+
+
+
+                   </div>
+
+
+
+
+            <div class="list-group">
+              <% if(data.result.opening_hours!=undefined){%>
+              <% data.result.opening_hours.weekday_text.forEach((days)=>{%>
+                  <li class="list-group-item">
+                    <%= days %>
+                  </li>
+
+              <%})%>
+            <%}%>
+
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="thumbnail">
+              <% if(data.result.photos!=undefined && data.result.photos[0]!=undefined){%>
+                    <img class="img-responsive" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=<%= data.result.photos[0].photo_reference%>&key=AIzaSyALWmLwsAQzrj9ZCzYCldEYJC9kD9BZGyY"/>
+                  <%}else{%>
+
+                    <img src="/img/hotel2.jpg" alt="hotel">
+                  <%}%>
+                <div class="caption-full">
+                    <h4 class="pull-right">Affordable</h4>
+                    <h3><a><%=data.result.name %></a></h3>
+                    <p>Address: <%=data.result.formatted_address %> </p>
+                      <p>Contact Number: <%=data.result.formatted_phone_number %> </p>
+                </div>
+            </div>
+
+
+            <div class="well">
+                <div class="text-right">
+                     Review
+                </div>
+                <hr>
+
+                  <% if(data.result.reviews!=undefined) {%>
+                 <% data.result.reviews.forEach(function(comment){ %>
+                   <div class="row">
+                       <div class="col-md-9">
+                           <strong><%= comment.author_name %></strong>
+                    <p>
+                        <%= comment.text %>
+                    </p>
+                <% }) %>
+                 <%}%>
+                </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
